@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 4343774}
   - component: {fileID: 4343776}
   - component: {fileID: 4343775}
+  - component: {fileID: 4343777}
+  - component: {fileID: 4343778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -184,8 +186,43 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 68
   m_CollisionDetection: 0
+--- !u!114 &4343777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1dd7eec7e099af41ac406fc98ab2222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseLook: 1
+  maxSpeed: 5
+  HAxis: Horizontal
+  VAxis: Vertical
+  fireAxis: Fire1
+--- !u!114 &4343778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce41428803f03cb4588f9f5439eed32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBounds:
+    serializedVersion: 2
+    x: -0.78
+    y: -5.4
+    width: 16
+    height: 10.8
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,8 +368,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -355,8 +392,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.70710665, y: -0, z: -0, w: 0.70710695}
+  m_LocalPosition: {x: -0.0807457, y: 5.350671, z: 0.009367276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -373,7 +410,7 @@ GameObject:
   - component: {fileID: 1491814104}
   - component: {fileID: 1491814105}
   m_Layer: 0
-  m_Name: bluecargoship
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

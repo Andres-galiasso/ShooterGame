@@ -28,7 +28,7 @@ public class BoundLock : MonoBehaviour
     {
         const int CUBEDEPTH = 1;
 
-        Vector3 boundsCenter = new Vector3(levelBounds.xMin + levelBounds.width * 0.05f, 0f, levelBounds.yMin + levelBounds.height * 0.5f);
+        Vector3 boundsCenter = new Vector3(levelBounds.xMin + levelBounds.width * 0.5f, 0f, levelBounds.yMin + levelBounds.height * 0.5f);
         Vector3 boundsHeight = new Vector3(levelBounds.width, CUBEDEPTH, levelBounds.height);
 
         Gizmos.DrawWireCube(boundsCenter, boundsHeight);

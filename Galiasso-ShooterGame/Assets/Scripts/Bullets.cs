@@ -27,12 +27,12 @@ public class Bullets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
-         * Health h = other.gameObject.getComponent<Health>();
-         * 
-         * h.healthPoint -= damage;
-         * Die();
-         */
+        
+        Health h = other.gameObject.getComponent<Health>();
+         
+        h.healthPoint -= damage;
+        Die();
+         
     }
 
     private void Die()

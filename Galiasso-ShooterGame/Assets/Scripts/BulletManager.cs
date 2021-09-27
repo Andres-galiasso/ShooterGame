@@ -5,7 +5,7 @@
  * Last Edited by: Andres Galiasso
  * Last Updated: 09/22/2021
  * 
- * Description: Read the fucking name dipshit
+ * Description: Manages the queue of all bullets
  */
 
 using System.Collections;
@@ -66,7 +66,7 @@ public class BulletManager : MonoBehaviour
 
         bulletManagerSingleton.bulletQueue.Enqueue(spawnedBullet);
 
-        return spawnedBullet; ;
+        return spawnedBullet;
     }
 
 }

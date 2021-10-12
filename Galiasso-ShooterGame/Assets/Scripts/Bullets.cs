@@ -3,7 +3,7 @@
  * Date Created: 09/22/2021
  * 
  * Last Edited by: Andres Galiasso
- * Last Updated: 09/22/2021
+ * Last Updated: 10/11/2021
  * 
  * Description: Does whatever a bullet does
  */
@@ -25,12 +25,16 @@ public class Bullets : MonoBehaviour
         Invoke("Die", lifeTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collided)
     {
+
+        Health h = collided.gameObject.GetComponent<Health>();
         
-        Health h = other.gameObject.getComponent<Health>();
-         
-        h.healthPoint -= damage;
+        if (h == null)
+        {
+            return;
+        }
+        h.SetHealth(h.GetHealth() - damage);
         Die();
          
     }

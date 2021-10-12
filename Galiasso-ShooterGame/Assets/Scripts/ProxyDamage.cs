@@ -17,16 +17,16 @@ public class ProxyDamage : MonoBehaviour
     /**** VARIABLES ****/
     public float damageRate = 10f; // Damage per second
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider collided)
     {
-        /*
-         * Health H = other.gameObject.GetComponent<Health>();
-         * 
-         * if (H = null) { return; }
-         * 
-         * H.healthPoint -= damageRate * Time.deltaTime;
-         * 
-         * 
-         */
+        Health h = collided.gameObject.GetComponent<Health>();
+
+        if (h = null)
+        {
+            return;
+        }
+
+        h.SetHealth(h.GetHealth() - (damageRate * Time.deltaTime));
+        
     }
 }

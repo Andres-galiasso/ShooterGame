@@ -3,7 +3,7 @@
  * Date Created: 09/22/2021
  * 
  * Last Edited by: Andres Galiasso
- * Last Updated: 09/22/2021
+ * Last Updated: 10/11/2021
  * 
  * Description: Spawns enemies around player
  */
@@ -14,15 +14,39 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /**** VARIABLES ****/
+    public float maxRadius = 1f;
+    public float interval = 5f;
+    public GameObject[] objToSpawn;
+    private Transform origin = null;
+
+    private void Awake()
     {
-        
+        origin = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        InvokeRepeating("Spawn", 0f, interval);
     }
+
+    private void Spawn()
+    {
+        if (origin == null)
+        {
+            return;
+        }
+
+        Vector3 spawnPos = origin.position + Random.onUnitSphere * maxRadius;
+        spawnPos = new Vector3(spawnPos.x, 0f, spawnPos.z);
+        SpawnRandomEnemy(spawnPos);
+    }
+
+    private void SpawnRandomEnemy(Vector3 spawnPos)
+    {
+        int rand = Random.Range(0, 2);
+
+        Instantiate(objToSpawn[rand], spawnPos, Quaternion.identity);
+    }
+
 }

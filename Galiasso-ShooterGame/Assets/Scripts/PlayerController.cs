@@ -3,7 +3,7 @@
  * Date Created: 09/13/2021
  *
  * Last Edited by: Andres Galiasso
- * Last Updated: 09/15/2021
+ * Last Updated: 10/11/2021
  * 
  * Description: Controls the player ship
  */
@@ -16,12 +16,15 @@ public class PlayerController : MonoBehaviour
 {
     /**** VARIABLES ****/
 
-    public bool mouseLook = true;
+    public bool mouseLook = false;
     public float maxSpeed = 5f;
+    public float reloadDelay = 0.3f;
+    public bool canFire = true;
+    public Transform[] turretTransforms;
 
-    public string HAxis = "Horizontal";
-    public string VAxis = "Vertical";
-    public string fireAxis = "Fire1";
+    private string HAxis = "Horizontal";
+    private string VAxis = "Vertical";
+    private string fireAxis = "Fire1";
 
     private Rigidbody thisBody = null;
 
@@ -29,6 +32,19 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         thisBody = this.gameObject.GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown(fireAxis) && canFire)
+        {
+            foreach(Transform t in turretTransforms)
+            {
+                BulletManager.SpawnBullet(t.position, t.rotation);
+            }
+            canFire = false;
+            Invoke("EnableFire", reloadDelay);
+        }
     }
 
     private void FixedUpdate()
@@ -55,6 +71,15 @@ public class PlayerController : MonoBehaviour
 
             transform.localRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
         }
+        else
+        {
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+        }
+    }
+
+    private void EnableFire()
+    {
+        canFire = true;
     }
 
 

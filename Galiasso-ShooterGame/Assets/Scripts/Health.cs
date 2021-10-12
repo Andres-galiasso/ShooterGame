@@ -15,22 +15,34 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     /**** VARIABLES ****/
-    public float healthPoint = 100f;
+    [SerializeField] private float healthPoints = 100f;
+    public bool shouldDestroyOnDeath = true;
 
+    public GameObject DeathParticlesPrefab = null;
 
-    private void Awake()
+    public float GetHealth()
     {
-        healthPoint = 100f;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        return healthPoints;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHealth(float value)
     {
-        
+        healthPoints = value;
+        if (healthPoints <= 0)
+        {
+            SendMessage("Die", SendMessageOptions.DontRequireReceiver);
+
+            if (DeathParticlesPrefab != null)
+            {
+                Instantiate(DeathParticlesPrefab, transform.position, transform.rotation);
+            }
+
+            if (shouldDestroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
+
+
 }

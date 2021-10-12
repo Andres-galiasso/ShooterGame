@@ -3,7 +3,7 @@
  * Date Created: 09/22/2021
  * 
  * Last Edited by: Andres Galiasso
- * Last Updated: 09/22/2021
+ * Last Updated: 10/11/2021
  * 
  * Description: Manages the queue of all bullets
  */
@@ -68,5 +68,4 @@ public class BulletManager : MonoBehaviour
 
         return spawnedBullet;
     }
-
 }

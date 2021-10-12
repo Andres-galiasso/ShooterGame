@@ -46,7 +46,55 @@ public class EnemySpawner : MonoBehaviour
     {
         int rand = Random.Range(0, 2);
 
-        Instantiate(objToSpawn[rand], spawnPos, Quaternion.identity);
+        if (!GameController.level2)
+        {
+            rand = 1;
+        }
+
+        switch(rand)
+        {
+            case 0:
+                SpawnChaser(rand, spawnPos);
+                break;
+            case 1:
+                SpawnShooter(rand);
+                break;
+        }
+
+    }
+
+    private void SpawnChaser(int enemyType, Vector3 spawnPos)
+    {
+        Instantiate(objToSpawn[enemyType], spawnPos, Quaternion.identity);
+    }
+
+    private void SpawnShooter(int enemyType)
+    {
+        int randDir;
+        if (GameController.level2)
+        {
+            randDir = Random.Range(0, 2);
+        }
+        else
+        {
+            randDir = 0;
+        }
+
+        int randPos = Random.Range(-5, 6);
+        float oneDirection = 3f;
+        switch (randDir)
+        {
+            case 0:
+                oneDirection = 3f;
+                break;
+            case 1:
+                oneDirection = -3f;
+                break;
+        }
+
+        Vector3 spnPos = new Vector3(randPos, 0f, oneDirection);
+
+        Instantiate(objToSpawn[enemyType], spnPos, Quaternion.identity);
     }
 
 }

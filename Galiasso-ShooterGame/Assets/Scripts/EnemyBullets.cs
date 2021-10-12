@@ -20,6 +20,11 @@ public class EnemyBullets : MonoBehaviour
     private bool canFire = true;
     public Transform[] turretTransforms;
 
+    private void Start() // uwu u know da drill bb
+    {
+        canFire = false;
+        Invoke("EnableFire", 2f);
+    }
     private void FixedUpdate()
     {
         if (canFire)

@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8452453393923700156}
   - component: {fileID: 8452453393923700097}
   - component: {fileID: 8452453393923700096}
+  - component: {fileID: 3649412199923976145}
   m_Layer: 0
   m_Name: Enemy-Fire
   m_TagString: Enemy
@@ -173,7 +174,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452453393923700158}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.75090057
   m_Height: 1.986299
@@ -224,3 +225,16 @@ MonoBehaviour:
   maxSpeed: 6
   acceleration: 0.2
   currentSpeed: 0
+--- !u!114 &3649412199923976145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452453393923700158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e347ddc4a557340a399312549e2184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 100

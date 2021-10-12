@@ -21,7 +21,7 @@ public class ProxyDamage : MonoBehaviour
     {
         Health h = collided.gameObject.GetComponent<Health>();
 
-        if (h = null)
+        if (h == null)
         {
             return;
         }

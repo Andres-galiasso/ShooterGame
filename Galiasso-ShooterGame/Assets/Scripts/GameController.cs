@@ -23,10 +23,23 @@ public class GameController : MonoBehaviour
     public string scorePrefix = string.Empty;
     public Text scoreText = null;
     public Text gameOverText = null;
+    public Text dynamicText = null;
+
+    public float textTime = 5f;
+
+    public int nextLevel = 250;
+    public static bool level2 = false;
 
     private void Awake()
     {
         thisInstance = this;
+    }
+
+    private void Start()
+    {
+        dynamicText.text = "ENEMIES AHEAD! LIMITED MOVEMENT UNLOCKED! FIRE AT WILL!";
+        thisInstance.dynamicText.gameObject.SetActive(true);
+        Invoke("HideDynamicText", textTime);
     }
 
     private void Update()
@@ -35,6 +48,21 @@ public class GameController : MonoBehaviour
         {
             scoreText.text = scorePrefix + score.ToString();
         }
+
+        if (score >= nextLevel)
+        {
+            NextLevel();
+        }
+    }
+
+    private void NextLevel()
+    {
+        level2 = true;
+        PlayerController.mouseLook = true;
+
+        dynamicText.text = "ENEMIES FROM ALL SIDES! UNLOCKED FREE MOVEMENT!";
+        thisInstance.dynamicText.gameObject.SetActive(true);
+        Invoke("HideDynamicText", textTime);
     }
 
     public static void GameOver()
@@ -43,6 +71,11 @@ public class GameController : MonoBehaviour
         {
             thisInstance.gameOverText.gameObject.SetActive(true);
         }
+    }
+
+    private void HideDynamicText()
+    {
+        thisInstance.dynamicText.gameObject.SetActive(false);
     }
 
 }

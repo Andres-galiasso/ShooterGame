@@ -28,6 +28,14 @@ public class EnemyFireMove : MonoBehaviour
         thisBody = this.gameObject.GetComponent<Rigidbody>();
     }
 
+    private void Start() // this might just be stupid but i might combine awake() and start() later (if u wanna)
+    {
+        if (gameObject.transform.position.z <= 0)
+        {
+            gameObject.transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
     private void Update()
     {
         if ((movePositive == 1 && currentSpeed >= maxSpeed) || (movePositive == -1 && currentSpeed <= maxSpeed * -1))

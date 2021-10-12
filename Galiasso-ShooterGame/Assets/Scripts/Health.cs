@@ -39,6 +39,11 @@ public class Health : MonoBehaviour
 
             if (shouldDestroyOnDeath)
             {
+                if (this.gameObject.tag == "Player")
+                {
+                    GameController.GameOver();
+                }
+
                 Destroy(gameObject);
             }
         }

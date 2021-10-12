@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 {
     /**** VARIABLES ****/
 
-    public bool mouseLook = false;
+    public static bool mouseLook = false;
     public float maxSpeed = 5f;
     public float reloadDelay = 0.3f;
     public bool canFire = true;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         thisBody = this.gameObject.GetComponent<Rigidbody>();
+        mouseLook = false;
     }
 
     private void Update()
@@ -52,12 +53,20 @@ public class PlayerController : MonoBehaviour
         float horz = Input.GetAxis(HAxis);
         float vert = Input.GetAxis(VAxis);
 
+        /*
+         * annoying floaty movement dont use lmao
+         * (keep just in case your movement is somehow worse)
+         * 
         Vector3 moveDirection = new Vector3(horz, 0f, vert);
         thisBody.AddForce(moveDirection.normalized * maxSpeed);
 
         thisBody.velocity = new Vector3(Mathf.Clamp(thisBody.velocity.x, -maxSpeed, maxSpeed),
             Mathf.Clamp(thisBody.velocity.y, -maxSpeed, maxSpeed),
             Mathf.Clamp(thisBody.velocity.z, -maxSpeed, maxSpeed));
+        */
+
+        Vector3 movement = new Vector3(horz * maxSpeed, 0f, vert * maxSpeed);
+        transform.Translate(movement * Time.deltaTime);
 
         // Look at mouse
         if (mouseLook)
@@ -81,6 +90,5 @@ public class PlayerController : MonoBehaviour
     {
         canFire = true;
     }
-
 
 }

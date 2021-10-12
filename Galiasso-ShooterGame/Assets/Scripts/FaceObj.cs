@@ -18,7 +18,7 @@ public class FaceObj : MonoBehaviour
     public Transform objToFace = null;
     public bool facePlayer = false;
 
-    private void Start()
+    private void Awake() // If this messes up change it back to Start()
     {
         if (!facePlayer)
         {
